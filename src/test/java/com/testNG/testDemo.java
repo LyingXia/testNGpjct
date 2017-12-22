@@ -1,10 +1,12 @@
+package com.testNG;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * created by xiapf on 2017/12/21
- */
-public class testDemo {
+    /**
+        * created by xiapf on 2017/12/21
+     * */
+public  class testDemo {
     @Test
     public void testcase1(){
         Assert.assertTrue(false);
@@ -16,3 +18,4 @@ public class testDemo {
         System.out.println("testcase1");
     }
 }
+

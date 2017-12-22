@@ -4,15 +4,70 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
     <groupId>testNGpjct</groupId>
     <artifactId>testNGpjct</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!--testNG-->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.8</version>
+            <version>6.9.8</version>
+            <scope>test</scope>
+         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--如果用的是testNG低于5.11 -->
+        <!--<dependency>-->
+            <!--<groupId>org.testng</groupId>-->
+            <!--<artifactId>testng</artifactId>-->
+            <!--<version>5.11</version>-->
+            <!--<scope>test</scope>-->
+            <!--<classifier>jdk15</classifier>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.53.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>velocity</groupId>
+            <artifactId>velocity-dep</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.uncommons</groupId>
+            <artifactId>reportng</artifactId>
+            <version>1.1.4</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.testng</groupId>
+                    <artifactId>testng</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <build>
@@ -38,10 +93,28 @@
                 <version>2.5</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
+                    <!--这里设置关联的testNG.xml路径，项目根目录下的res文件夹里面-->
                     <suiteXmlFiles>
                         <file>res/testNG.xml</file>
                     </suiteXmlFiles>
-                    <!--<workingDirectory>target/</workingDirectory>-->
+
+                    <properties>
+
+                        <!--刚开始这里没有设置默认监听false，所以没有启用reportNG功能。-->
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>false</value>
+                        </property>
+
+                        <!--Setting ReportNG listener-->
+                        <property>
+                            <name>listener</name>
+                            <value>org.uncommons.reportng.HTMLReporter, org.uncommons.reportng.JUnitXMLReporter</value>
+                        </property>
+
+                    </properties>
+                    <workingDirectory>target/</workingDirectory>
+                    <forkMode>always</forkMode>
                 </configuration>
             </plugin>
         </plugins>
