@@ -95,7 +95,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <!--这里设置关联的testNG.xml路径，项目根目录下的res文件夹里面-->
                     <suiteXmlFiles>
-                        <file>res/testNG.xml</file>
+                        <file>src/test/java/res/testNG.xml</file>
                     </suiteXmlFiles>
 
                     <properties>
