@@ -36,7 +36,7 @@ public class testDemo1Test {
     @Test
     public void testSum() {
         System.out.println("@Test sum(): " + sum + " = " + testSum);
-        assertEquals(sum, testSum,"这个message相当于备注");
+        assertEquals(sum, testSum,"这个message相当于备注在失败的时候出现");
     }
 
 }
